@@ -1,30 +1,26 @@
 <?php
 
-namespace gipfl\Translation;
+namespace nonini\Translation;
 
-class StaticTranslator
+final class StaticTranslator
 {
-    /** @var TranslatorInterface */
-    private static $translator;
+    private static ?TranslatorInterface $translator = null;
 
-    public static function get()
+    public static function get(): TranslatorInterface
     {
         if (self::$translator === null) {
-            static::setNoTranslator();
+            self::$translator = new NoTranslator();
         }
 
-        return static::$translator;
+        return self::$translator;
     }
 
-    public static function setNoTranslator()
+    public static function setNoTranslator(): void
     {
-        static::set(new NoTranslator());
+        self::set(new NoTranslator());
     }
 
-    /**
-     * @param TranslatorInterface $translator
-     */
-    public static function set(TranslatorInterface $translator)
+    public static function set(TranslatorInterface $translator): void
     {
         self::$translator = $translator;
     }

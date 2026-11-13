@@ -1,10 +1,10 @@
 <?php
 
-namespace gipfl\Translation;
+namespace nonini\Translation;
 
 class NoTranslator implements TranslatorInterface
 {
-    public function translate($string)
+    public function translate(string $string): string
     {
         return $string;
     }

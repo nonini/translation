@@ -1,36 +1,25 @@
 <?php
 
-namespace gipfl\Translation;
+namespace nonini\Translation;
 
 trait TranslationHelper
 {
-    /** @var TranslatorInterface */
-    private static $translator;
-
-    /**
-     * @param $string
-     * @param string|null $context
-     * @return string
-     */
-    public function translate($string, $context = null)
+    public function translate(string $string, ?string $context = null): string
     {
         return self::getTranslator()->translate($string);
     }
 
-    public static function getTranslator()
+    public static function getTranslator(): TranslatorInterface
     {
         return StaticTranslator::get();
     }
 
-    public static function setNoTranslator()
+    public static function setNoTranslator(): void
     {
         StaticTranslator::set(new NoTranslator());
     }
 
-    /**
-     * @param TranslatorInterface $translator
-     */
-    public static function setTranslator(TranslatorInterface $translator)
+    public static function setTranslator(TranslatorInterface $translator): void
     {
         StaticTranslator::set($translator);
     }

@@ -1,8 +1,8 @@
 <?php
 
-namespace gipfl\Translation;
+namespace nonini\Translation;
 
 interface TranslatorInterface
 {
-    public function translate($string);
+    public function translate(string $string): string;
 }
